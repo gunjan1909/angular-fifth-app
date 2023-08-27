@@ -15,6 +15,8 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'users', component: UsersComponent },
   { path: 'servers', component: ServersComponent },
+  //passing parameter in route
+  { path: 'users/:id', component: UserComponent },
 ];
 @NgModule({
   declarations: [
