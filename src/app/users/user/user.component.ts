@@ -1,14 +1,34 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css'],
 })
-export class UserComponent implements OnInit {
-  @Input() user!: { id: number; name: string };
+export class UserComponent implements OnInit, OnDestroy {
+  //@Input() user!: { id: number; name: string };
+  user!: { id: number; name: string };
+  paramsSubscription!: Subscription;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.user = {
+      id: this.route.snapshot.params['id'],
+      name: this.route.snapshot.params['name'],
+    };
+
+    // This is for when we want to change the user details without reloading the component
+    //PARAMS IS AN OBSERVABLE
+    this.paramsSubscription = this.route.params.subscribe((params) => {
+      //console.log(params);
+      this.user.id = params['id'];
+      this.user.name = params['name'];
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.paramsSubscription.unsubscribe();
+  }
 }

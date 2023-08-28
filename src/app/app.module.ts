@@ -16,7 +16,11 @@ const appRoutes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'servers', component: ServersComponent },
   //passing parameter in route
-  { path: 'users/:id', component: UserComponent },
+  { path: 'users/:id/:name', component: UserComponent },
+  {
+    path: 'servers/:id/edit',
+    component: EditServerComponent,
+  },
 ];
 @NgModule({
   declarations: [
@@ -25,8 +29,8 @@ const appRoutes: Routes = [
     UsersComponent,
     ServersComponent,
     UserComponent,
-    EditServerComponent,
     ServerComponent,
+    EditServerComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [ServersService],
