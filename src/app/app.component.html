@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
-        <!-- routerLinkActieveOptions, exact true is reserved thing, adds the css class only if the full path is true -->
+        <!-- routerLinkActieveOptions, exact true is reserved thing, adds the css class only if the full path is true, else even if its localhost:4200/servers, the home path is still true so css class is retained -->
         <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a
             routerLink="/">Home</a></li>
         <li role="presentation" routerLinkActive="active"><a routerLink="/servers">Servers</a></li>
@@ -12,18 +12,10 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <!-- <app-home></app-home> -->
-      <router-outlet></router-outlet>
+      <!-- the template, matched component is inserted in the router outlet -->
+      <router-outlet>
+        <!-- home or serer or user component -->
+      </router-outlet>
     </div>
   </div>
-  <!-- <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <app-users></app-users>
-    </div>
-  </div> -->
-  <!-- <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <app-servers></app-servers>
-    </div>
-  </div> -->
 </div>

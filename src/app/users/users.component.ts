@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './users.component.html',
 })
 export class UsersComponent {
-  users = [
+  users: { id: number; name: string }[] = [
     {
       id: 1,
       name: 'Max',
